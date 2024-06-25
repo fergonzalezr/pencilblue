@@ -9,12 +9,9 @@ steps:
 
 - script: sudo npm install -g pencilblue-cli
   displayName: 'Instalar pencilblue-cli'
-- script: |
-    mkdir pencilblue_project
-    pbctrl install pencilblue_project
-    displayName: 'Instalar PencilBlue en el directorio pencilblue_project'
 
 - script: |
+    pbctrl install pencilblue_project
     cd pencilblue_project
     npm install
     displayName: 'Instalar dependencias del proyecto'
