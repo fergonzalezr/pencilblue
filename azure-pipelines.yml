@@ -1,0 +1,27 @@
+trigger:
+- main
+pool:
+  vmImage: 'ubuntu-latest'
+steps:
+- task: NodeTaskRunnerInstaller@0
+  inputs:
+    nodeVersion: '16'
+
+- script: sudo npm install -g pencilblue-cli
+  displayName: 'Instalar pencilblue-cli'
+- script: |
+    mkdir pencilblue_project
+    pbctrl install pencilblue_project
+    displayName: 'Instalar PencilBlue en el directorio pencilblue_project'
+
+- script: |
+    cd pencilblue_project
+    npm install
+    displayName: 'Instalar dependencias del proyecto'
+
+- script: |
+    cd pencilblue_project
+    npm test
+    displayName: 'Ejecutar pruebas'
+
+
